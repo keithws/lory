@@ -286,8 +286,14 @@ var lory = function (slider, opts) {
      * autoMove: move in the specified direction after the specified delay
      */
     var autoMove = function () {
+        var delay;
+
+        delay = parseInt(slides[index].getAttribute('data-lory-delay'), 10);
+        if (isNaN(delay)) {
+            delay = options.autoDelay;
+        }
         clearTimeout(timeout);
-        timeout = setTimeout(options.autoDirection, options.autoDelay);
+        timeout = setTimeout(options.autoDirection, delay);
     };
 
     /**
